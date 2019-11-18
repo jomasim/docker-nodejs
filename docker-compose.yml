@@ -1,0 +1,16 @@
+version: '3'
+services:
+  nodejs-service :
+    build: ./nodeapp
+    volumes:
+      - ./nodeapp:/src/nodeapp
+    ports:
+      - 8081:8080
+  reactapp-service:
+    build: ./reactapp
+    volumes:
+      - ./reactapp:/src/reactapp
+    ports:
+      - 3002:3000
+    depends_on:
+      - nodejs-service
